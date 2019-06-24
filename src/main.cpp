@@ -2,6 +2,7 @@
 
 #include "display.h"
 #include "measure.h"
+#include "mqtt.h"
 
 
 
@@ -9,10 +10,13 @@ void setup()
 {
     initDisplay();
     setScale(state.scale);
+    screenRepaint();
+    initMqtt();
 }
 
 void loop()
 {
+    updateWifiStatus();
 
     for (int v=0; v<state.avg_samples; v++) {
         int old_scale = state.scale;
@@ -31,6 +35,5 @@ void loop()
         state.adc_avg = 0;
     }
     screenRepaint();
-
 }
 

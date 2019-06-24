@@ -6,10 +6,10 @@ struct globalState {
     float adc_ratio = 1.000;
     int adc_now = 0;
     int adc_avg = 0;
-    int avg_samples = 30;
+    int avg_samples = 20;
     int voltage = 0;
     int scale = 1;
-    bool wifi = 0;
+    int wifi = 0;
 };
 
 extern globalState state;

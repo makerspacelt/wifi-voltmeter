@@ -54,17 +54,23 @@ void showBar(bool send)
 
 void showWifi(bool send)
 {
-    u8g2.setFont(u8g2_font_open_iconic_www_2x_t);
+    u8g2.setFont(u8g2_font_open_iconic_all_2x_t);
     u8g2.setCursor(112,16);
-
-    if (state.wifi) {
-        if (false) {
-            u8g2.write(81);
-        } else {
-            u8g2.write(72);
-        }
-    } else {
-        u8g2.write(74);
+    switch (state.wifi) {
+        case 1:
+            u8g2.write(207); // connecting
+            break;
+        case 2:
+            u8g2.write(247); // wifi connected
+            break;
+        case 3:
+            u8g2.write(248); //mqtt connected
+            break;
+        case 4:
+            u8g2.write(121); //wifi failed
+            break;
+        default:
+            u8g2.write(87); // disconected
     }
 
     if (send) {
@@ -130,6 +136,13 @@ void showVoltage(bool send)
     }
 }
 
+void showMessage(int message)
+{
+    u8g2.setFont(u8g2_font_bubble_tr);
+    u8g2.setCursor(0,22);
+    u8g2.print(message);
+    u8g2.sendBuffer();
+}
 
 
 
