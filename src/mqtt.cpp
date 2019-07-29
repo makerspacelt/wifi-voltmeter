@@ -41,7 +41,7 @@ void setupWifi()
 {
     Serial.begin(460800);
     Serial.setDebugOutput(true);
-
+//system_phy_set_powerup_option(3);
     WiFi.persistent(false);
     WiFi.mode(WIFI_STA);
     WiFi.begin(ssid, password);

@@ -35,7 +35,7 @@ void showBar(bool send)
 {
     String bar = "";
     for (int i=0; i<21; i++) {
-        if (state.adc_now > i*50) {
+        if (state.adc_now > i*state.adc_max/22) {
             bar += '.';
         } else {
             bar += ' ';
@@ -101,7 +101,7 @@ void showVoltage(bool send)
     for (int i=0; i<state.scale; i++) {
         state.voltage *= 10;
     }
-    state.voltage /= state.adc_ratio;
+    state.voltage /= state.adc_ratio[state.scale];
     value = String(state.voltage/1000.0, 3);
     u8g2.setCursor(0,22);
 //    u8g2.print(adc_now);
@@ -117,7 +117,7 @@ void showVoltage(bool send)
         pre_offset = 0;
         switch (value.charAt(i)) {
             case '.':
-               post_offset = 16;
+                post_offset = 16;
                 break;
              case '1':
                 pre_offset = 8;

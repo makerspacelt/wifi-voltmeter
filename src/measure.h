@@ -13,5 +13,7 @@
 
 void readVoltage();
 void setScale( int );
+void setScaleRaw( int );
+void setScaleFet( int );
 
 #endif // MEASURE_H

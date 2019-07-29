@@ -19,6 +19,7 @@ void loop()
     updateWifiStatus();
 
     for (int v=0; v<state.avg_samples; v++) {
+        delay(1); // leave some CPU for WIFI
         int old_scale = state.scale;
         readVoltage();
         if (old_scale != state.scale) {
